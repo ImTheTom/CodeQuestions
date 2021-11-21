@@ -1,10 +1,16 @@
-Running Typescript files
+# Code Questions
+Answers to code questions I find can be from leetcode or other websites.
 
-Requires Node/npm
+## Running Typescript files
+
+ * Requires Node/npm
+
 npm install -g ts-node typescript '@types/node'
+
 ts-node typescript.ts
 
-Running go files
+## Running go files
 
-Requires go
+* Requires go
+
 go run go.go
