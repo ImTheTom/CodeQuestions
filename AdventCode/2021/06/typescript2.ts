@@ -1,20 +1,12 @@
 import fs from 'fs';
 import readline from 'readline';
 
-class fish {
-  days = 0;
-  constructor(d: number) {
-    this.days = d;
+async function count(input: number[]): Promise<number> {
+  let total = 0;
+  for (let i = 0; i < input.length; i++) {
+    total += input[i];
   }
-
-  grow(): boolean {
-    this.days--;
-    if (this.days < 0) {
-      this.days = 6;
-      return true;
-    }
-    return false;
-  }
+  return total;
 }
 
 async function processLineByLine() {
@@ -37,44 +29,42 @@ async function processLineByLine() {
 
   var numericalInput = input.split(',').map(Number);
 
-  let fishArray: fish[] = [];
+  let fishArray: number[] = new Array(9).fill(0);
 
   for (let i = 0; i < numericalInput.length; i++) {
-    let tmp = new fish(numericalInput[i]);
-    fishArray.push(tmp);
+    fishArray[numericalInput[i]]++;
   }
 
-  let newFishCount = 0;
+  console.log(fishArray);
 
-  let tmpFishArray: fish[] = [];
+  let shiftDown = 0;
+  let shiftDown2 = 0;
 
-  let totalFishCount = 0;
+  let totalResetFishes = 0;
 
-  for (let j = fishArray.length-1; j >= 0; j--) {
-    let tmp = fishArray.pop();
-    if (!tmp) {
-      continue;
-    }
-    tmpFishArray.push(tmp);
-    for (let i = 0; i < 64; i++) {
-      console.log(tmpFishArray.length);
-      for (let k = 0; k < tmpFishArray.length; k++) {
-        if (tmpFishArray[k].grow()) {
-          newFishCount++;
-        }
+  for (let i = 0; i<256; i++) {
+    totalResetFishes = fishArray[0];
 
-        while (newFishCount > 0) {
-          let tmp = new fish(8);
-          tmpFishArray.push(tmp);
-          newFishCount--;
-        }
+    shiftDown = 0;
+    shiftDown2 = 0;
+
+    for (let j = fishArray.length-1; j >= 0; j--){
+      if(j == fishArray.length-1) {
+        shiftDown = fishArray[j];
+      } else {
+        shiftDown2 = fishArray[j];
+        fishArray[j] = shiftDown;
+        shiftDown = shiftDown2;
       }
     }
-    totalFishCount += tmpFishArray.length;
-    console.log(totalFishCount);
-    tmpFishArray = [];
+
+    fishArray[6] += totalResetFishes;
+    fishArray[8] = totalResetFishes;
+
+    console.log(fishArray);
   }
-  return (2*totalFishCount)*3;
+
+  return await count(fishArray);
 }
 
 async function main() {
