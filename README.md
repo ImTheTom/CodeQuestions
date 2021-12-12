@@ -1,5 +1,5 @@
 # Code Questions
-Answers to code questions I find can be from leetcode or other websites.
+Answers to code questions I find.
 
 ## Running Typescript files
 
