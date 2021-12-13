@@ -1,6 +1,8 @@
 import fs from 'fs';
 import readline from 'readline';
 
+// Credit tymscar for inspiration
+
 class Graph {
   nodes: Node[];
   paths: Node[][];
@@ -40,41 +42,45 @@ class Graph {
   }
 
   AddNewInput(from: string, to: string) {
-    let toNode = this.GetNodeOrCreateNode(to);
     let fromNode = this.GetNodeOrCreateNode(from);
+    let toNode = this.GetNodeOrCreateNode(to);
+
     fromNode.AddEdge(toNode);
     toNode.AddEdge(fromNode);
   }
 
   FindPaths(start: string, goal: string) {
-    let sNode = this.GetNode(start);
-    let gNode = this.GetNode(goal);
-    if (!sNode || !gNode) {
-      return;
-    }
-
-    let queue: Node[] = [];
-    let explored: Node[] = [];
-    explored.push(sNode);
-    queue.push(sNode);
-
-    while(queue.length > 0) {
+    const queue = [[start]];
+    while (queue.length > 0) {
       let curr = queue.pop();
       if (!curr) {
         return;
       }
 
-      if (curr == gNode) {
-        this.total++;
+      let currLastPlace = curr[curr.length-1];
+      if (!currLastPlace) {
+        return;
       }
 
-      for (let currEdge of curr.getEdges()) {
-        if (currEdge.isSmall() && explored.indexOf(currEdge) == -1 && queue.indexOf(currEdge) !== -1) {
-          explored.push()
-          queue.push(currEdge);
-        } else {
-          queue.push(currEdge);
+      if (currLastPlace == goal) {
+        this.total++;
+        continue;
+      }
+
+      const actualNode = this.GetNode(currLastPlace);
+      if (!actualNode) {
+        return;
+      }
+
+      for (let i = 0; i < actualNode.getEdges().length; i++) {
+        let tmp = actualNode.getEdges()[i];
+        if (tmp.getName() == 'start') {
+          continue;
         }
+        if (tmp.isSmall() && curr.includes(tmp.getName())) {
+          continue;
+        }
+        queue.push([...curr, tmp.getName()])
       }
     }
   }
@@ -95,8 +101,8 @@ class Node {
     this.edges = [];
   }
 
-  AddEdge(nodeName: Node) {
-    this.edges.push(nodeName);
+  AddEdge(node: Node) {
+    this.edges.push(node);
   }
 
   isSmall(): Boolean {
