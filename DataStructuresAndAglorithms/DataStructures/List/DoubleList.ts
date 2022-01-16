@@ -20,6 +20,28 @@ export class DoublelyLinkedList {
 		this.End.previous = previousEnd;
 	}
 
+	addNodeAfter(newNode: Node, value: number) {
+		let tempHead: Node|undefined = this.Head;
+
+		while(tempHead != undefined) {
+			if (tempHead.value == value) {
+				newNode.next = tempHead.next;
+				newNode.previous = tempHead;
+				tempHead.next = newNode;
+				return true;
+			}
+			tempHead = tempHead.next;
+		}
+
+		return false;
+	}
+
+	newHead(newNode: Node) {
+		newNode.next = this.Head;
+		this.Head.previous = newNode;
+		this.Head = newNode;
+	}
+
 	exists(value: number): boolean {
 		let tempHead: Node|undefined = this.Head;
 		while(tempHead != undefined) {
@@ -42,6 +64,9 @@ export class DoublelyLinkedList {
 		while(tempHead != undefined) {
 			if (tempHead.value == value) {
 				tempHead.previous!.next = tempHead.next;
+				if (tempHead.value == this.End.value) {
+					this.End = tempHead.previous!;
+				}
 				return true;
 			}
 			tempHead = tempHead.next;
@@ -57,6 +82,16 @@ export class DoublelyLinkedList {
 			console.log(`INDEX - ${index} has a value of ${tempHead.value}`)
 			index++;
 			tempHead = tempHead.next;
+		}
+	}
+
+	printBackwards() {
+		let tempHead: Node|undefined = this.End;
+		let index = 0;
+		while (tempHead != undefined) {
+			console.log(`INDEX - ${index} has a value of ${tempHead.value}`)
+			index++;
+			tempHead = tempHead.previous;
 		}
 	}
 }
@@ -120,3 +155,23 @@ myList.print();
 console.log("Delete the non existant value");
 
 console.log(`Result of deletion of non existant ${myList.delete(16)}`);
+
+console.log("Add another value after 10");
+
+myList.addNodeAfter({
+	value: 15
+}, 10);
+
+myList.print();
+
+console.log("Add a new start value");
+
+myList.newHead({
+	value: 5
+});
+
+myList.print();
+
+console.log("Transverse backwards");
+
+myList.printBackwards();

@@ -17,6 +17,26 @@ export class SinglelyLinkedList {
 		this.End = newNode;
 	}
 
+	addNodeAfter(newNode: Node, value: number) {
+		let tempHead: Node|undefined = this.Head;
+
+		while(tempHead != undefined) {
+			if (tempHead.value == value) {
+				newNode.next = tempHead.next;
+				tempHead.next = newNode;
+				return true;
+			}
+			tempHead = tempHead.next;
+		}
+
+		return false;
+	}
+
+	newHead(newNode: Node) {
+		newNode.next = this.Head;
+		this.Head = newNode;
+	}
+
 	exists(value: number): boolean {
 		let tempHead: Node|undefined = this.Head;
 		while(tempHead != undefined) {
@@ -42,6 +62,9 @@ export class SinglelyLinkedList {
 					previous.next = tempHead.next;
 				} else if (previous && previous?.next) {
 					previous.next = undefined;
+				}
+				if (tempHead.value == this.End.value && previous) {
+					this.End = previous;
 				}
 				return true;
 			}
@@ -122,3 +145,19 @@ myList.print();
 console.log("Delete the non existant value");
 
 console.log(`Result of deletion of non existant ${myList.delete(16)}`);
+
+console.log("Add another value after 10");
+
+myList.addNodeAfter({
+	value: 15
+}, 10);
+
+myList.print();
+
+console.log("Add a new start value");
+
+myList.newHead({
+	value: 5
+});
+
+myList.print();
