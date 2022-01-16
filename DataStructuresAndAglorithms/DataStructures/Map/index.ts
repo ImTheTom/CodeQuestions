@@ -1,0 +1,1 @@
+// Look at https://howtodoinjava.com/typescript/maps/
