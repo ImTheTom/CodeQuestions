@@ -1,4 +1,4 @@
-export class Queue {
+export class Stack {
 	q: Array<any>;
 
 	constructor() {
@@ -10,7 +10,7 @@ export class Queue {
 	}
 
 	dequeue(): any {
-		return this.q.shift();
+		return this.q.pop();
 	}
 
 	exists(searchValue: any): boolean {
@@ -29,19 +29,19 @@ export class Queue {
 	}
 }
 
-let q = new Queue();
+let stack = new Stack();
 
 console.log("Add and print out queue")
 
-q.enqueue(5);
-q.enqueue(6);
-q.enqueue(7);
-q.enqueue(8);
+stack.enqueue(5);
+stack.enqueue(6);
+stack.enqueue(7);
+stack.enqueue(8);
 
-q.print();
+stack.print();
 
 console.log("Dequeue")
-console.log(q.dequeue());
+console.log(stack.dequeue());
 
 console.log("print out current queue")
-q.print();
+stack.print();
