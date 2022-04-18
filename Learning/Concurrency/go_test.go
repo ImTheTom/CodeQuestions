@@ -20,6 +20,18 @@ func TestSynchronous(t *testing.T) {
 	CorrectArray(t, output)
 }
 
+func TestBasicWorker(t *testing.T) {
+	input := CreateInputArray()
+	output := BasicWorkers(input)
+	CorrectArray(t, output)
+}
+
+func TestActualWorker(t *testing.T) {
+	input := CreateInputArray()
+	output := ActualWorker(input)
+	CorrectArray(t, output)
+}
+
 func CorrectArray(t *testing.T, output []int) {
 	for i := 0; i < len(output); i++ {
 		found := false
