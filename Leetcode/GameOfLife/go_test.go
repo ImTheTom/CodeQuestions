@@ -8,26 +8,29 @@ import (
 
 func TestDoQuestion(t *testing.T) {
 	type args struct {
-		first  int
-		second int
+		first [][]int
 	}
 	tests := []struct {
 		name string
 		args args
-		want int
+		want [][]int
 	}{
 		{
 			name: "first",
 			args: args{
-				first:  1,
-				second: 1,
+				first: [][]int{
+					{0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0},
+				},
 			},
-			want: 2,
+			want: [][]int{
+				{0, 0, 0}, {1, 0, 1}, {0, 1, 1}, {0, 1, 0},
+			},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.Equal(t, tt.want, DoQuestion(tt.args.first, tt.args.second))
+			DoQuestion(tt.args.first)
+			assert.Equal(t, tt.want, tt.args.first)
 		})
 	}
 }
