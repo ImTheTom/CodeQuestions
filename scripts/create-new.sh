@@ -32,3 +32,4 @@ originalDir="$SCRIPT_DIR/../$SampleDirName/$type";
 newDir="$SCRIPT_DIR/../$LeetcodeDirName/$name";
 
 cp -r $originalDir $newDir
+
