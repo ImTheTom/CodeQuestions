@@ -4,7 +4,7 @@ import "fmt"
 
 const defaultValue = 0
 
-func maxSubArray(nums []int) int {
+func DoQuestion(nums []int) int {
 	res := nums[0]
 	tmpRes := defaultValue
 
