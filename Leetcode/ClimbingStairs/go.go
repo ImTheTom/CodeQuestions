@@ -36,8 +36,23 @@ func stepsValue(numbs []int) int {
 	return total
 }
 
+func actualSolve(n int) int {
+	if n <= 3 {
+		return n
+	}
+
+	n1, n2 := 3, 2
+	for i := 3; i <= n; i++ {
+		tmp := n1
+		n1 = n1 + n2
+		n2 = tmp
+	}
+
+	return n2
+}
+
 func main() {
 	fmt.Println("Running main")
-	result := DoQuestion(5)
+	result := actualSolve(5)
 	fmt.Printf("Got 5 - %v\n", result)
 }
