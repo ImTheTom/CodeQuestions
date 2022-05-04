@@ -1,5 +1,5 @@
 # Code Questions
-Answers to code questions I find and hopefully less complex versions of https://github.com/ImTheTom/OldSideProjectsCode/tree/master/LeetCode 
+Answers to code questions I find and hopefully less complex versions of https://github.com/ImTheTom/OldSideProjectsCode/tree/master/LeetCode
 
 ## Running Typescript files
 
