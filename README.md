@@ -14,5 +14,3 @@ ts-node typescript.ts
 * Requires go
 
 go run go.go
-
-## Running others
