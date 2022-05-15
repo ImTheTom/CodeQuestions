@@ -8,8 +8,7 @@ import (
 
 func TestDoQuestion(t *testing.T) {
 	type args struct {
-		first  int
-		second int
+		first *TreeNode
 	}
 	tests := []struct {
 		name string
@@ -19,15 +18,14 @@ func TestDoQuestion(t *testing.T) {
 		{
 			name: "first",
 			args: args{
-				first:  1,
-				second: 1,
+				first: buildTree(),
 			},
-			want: 2,
+			want: 15,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.Equal(t, tt.want, DoQuestion(tt.args.first, tt.args.second))
+			assert.Equal(t, tt.want, DoQuestion(tt.args.first))
 		})
 	}
 }
