@@ -5,10 +5,10 @@ import (
 	"fmt"
 )
 
-type Tree struct {
-	Root *node.TreeNode
+type BinaryTree struct {
+	Root *node.BinaryNode
 }
 
-func (t *Tree) string() {
+func (t *BinaryTree) string() {
 	fmt.Println(t.Root.Val)
 }

@@ -7,6 +7,6 @@ import (
 
 func main() {
 	fmt.Println("Running main")
-	tree := tree.ExampleOne()
+	tree := tree.BinaryExampleOne()
 	fmt.Printf("Got %v\n", tree)
 }
