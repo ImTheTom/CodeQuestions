@@ -25,20 +25,28 @@ func TestDoQuestion(t *testing.T) {
 			want: 3,
 		},
 		{
-			name: "Second",
+			name: "second",
+			args: args{
+				first:  7,
+				second: -3,
+			},
+			want: -2,
+		},
+		{
+			name: "third",
+			args: args{
+				first:  -1,
+				second: 1,
+			},
+			want: -1,
+		},
+		{
+			name: "fourth",
 			args: args{
 				first:  -2147483648,
 				second: -1,
 			},
 			want: 2147483647,
-		},
-		{
-			name: "Third",
-			args: args{
-				first:  -2147483648,
-				second: 1,
-			},
-			want: -2147483648,
 		},
 	}
 	for _, tt := range tests {
