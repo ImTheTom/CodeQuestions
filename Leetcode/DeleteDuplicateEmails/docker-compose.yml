@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  lc-db:
+    image: mysql:5.7
+    volumes:
+      - ./init-files:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: 'lc'
+      MYSQL_USER: 'leetcode'
+      MYSQL_PASSWORD: 'test'
+      MYSQL_ROOT_PASSWORD: 'test'
