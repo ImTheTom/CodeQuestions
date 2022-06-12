@@ -4,4 +4,6 @@ mysql -u leetcode -p
 
 SHOW DATABASES;
 
-USE [DATABASE]
+USE [DATABASE];
+
+SHOW TABLES;
