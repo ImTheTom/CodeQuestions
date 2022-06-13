@@ -1,0 +1,3 @@
+go test -fuzz=Fuzz
+
+go test -fuzz=Fuzz -fuzztime 30s
