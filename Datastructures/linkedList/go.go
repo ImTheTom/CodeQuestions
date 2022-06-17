@@ -5,18 +5,32 @@ import (
 	"time"
 )
 
-// Three types. Single, double and circular.
-
-func DoQuestion(first int, second int) int {
-	return first + second
-}
+// Three main types. Single, double and circular. Circular can be either double or single.
 
 func main() {
 	start := time.Now()
 
 	fmt.Println("Running main")
-	result := DoQuestion(1, 1)
-	fmt.Printf("Got %v\n", result)
+
+	l := &SingleLinkedList{}
+
+	l.Append(5)
+	l.Append(6)
+	l.Append(7)
+
+	l.String()
+
+	l.InsertToHead(2)
+
+	l.InsertAtIndex(3, 1)
+
+	l.String()
+
+	l.RemoveHead()
+	l.RemoveEnd()
+	l.RemoveAtIndex(2)
+
+	l.String()
 
 	elapsed := time.Since(start)
 	fmt.Printf("Total execution time is %s\n", elapsed)
