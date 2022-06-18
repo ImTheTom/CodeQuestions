@@ -5,24 +5,17 @@ import (
 	"time"
 )
 
-type NodeWithParent struct {
-	Value  int
-	Left   *NodeWithParent
-	Right  *NodeWithParent
-	Parent *NodeWithParent
-}
-
 type Node struct {
 	Value int
 	Left  *Node
 	Right *Node
 }
 
-type BinaryTree struct {
+type BinarySearchTree struct {
 	Root *Node
 }
 
-func (b *BinaryTree) Insert(value int) {
+func (b *BinarySearchTree) Insert(value int) {
 	if b.Root == nil {
 		b.Root = &Node{
 			Value: value,
@@ -33,7 +26,7 @@ func (b *BinaryTree) Insert(value int) {
 	b.recursiveInsert(value, b.Root)
 }
 
-func (b *BinaryTree) recursiveInsert(value int, node *Node) {
+func (b *BinarySearchTree) recursiveInsert(value int, node *Node) {
 	// Should never get here, but good to have.
 	if node == nil {
 		return
@@ -77,7 +70,7 @@ func main() {
 
 	fmt.Println("Running main")
 
-	t := &BinaryTree{}
+	t := &BinarySearchTree{}
 
 	t.Insert(20)
 	t.Insert(10)
