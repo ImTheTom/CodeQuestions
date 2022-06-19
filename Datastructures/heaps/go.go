@@ -1,7 +1,6 @@
 package main
 
 import (
-	"container/heap"
 	"fmt"
 	"time"
 )
@@ -10,25 +9,31 @@ import (
 
 // A heap is a tree with the property that each node is the minimum-valued node in its subtree.
 
-// An IntHeap is a min-heap of ints.
-type IntHeap []int
-
-func (h IntHeap) Len() int           { return len(h) }
-func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
-func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
-
-func (h *IntHeap) Push(x any) {
-	// Push and Pop use pointer receivers because they modify the slice's length,
-	// not just its contents.
-	*h = append(*h, x.(int))
+type MinHeap struct {
+	Heap []int
 }
 
-func (h *IntHeap) Pop() any {
-	old := *h
-	n := len(old)
-	x := old[n-1]
-	*h = old[0 : n-1]
-	return x
+func (*MinHeap) Parent(index int) int {
+	return (index - 1) / 2
+}
+
+func (h *MinHeap) Swap(first, second int) {
+	temp := h.Heap[first]
+	h.Heap[first] = h.Heap[second]
+	h.Heap[second] = temp
+}
+
+func (h *MinHeap) Insert(value int) {
+	h.Heap = append(h.Heap, value)
+	h.upHeapify(len(h.Heap) - 1)
+}
+
+func (h *MinHeap) upHeapify(index int) {
+	parentIdx := h.Parent(index)
+
+	for h.Heap[index] < h.Heap[parentIdx] {
+		h.Swap(index, parentIdx)
+	}
 }
 
 func main() {
@@ -36,23 +41,16 @@ func main() {
 
 	fmt.Println("Running main")
 
-	h := &IntHeap{}
+	mh := MinHeap{}
 
-	heap.Init(h)
+	mh.Insert(8)
+	mh.Insert(7)
+	mh.Insert(6)
+	mh.Insert(5)
+	mh.Insert(3)
+	mh.Insert(2)
 
-	heap.Push(h, 1)
-	heap.Push(h, 2)
-	heap.Push(h, 3)
-	heap.Push(h, 4)
-	heap.Push(h, 5)
-	heap.Push(h, 6)
-
-	fmt.Printf("minimum: %d\n", (*h)[0])
-	for h.Len() > 0 {
-		fmt.Printf("%d ", heap.Pop(h))
-	}
-
-	fmt.Println(h)
+	fmt.Println(mh.Heap)
 
 	elapsed := time.Since(start)
 	fmt.Printf("Total execution time is %s\n", elapsed)
