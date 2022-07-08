@@ -7,17 +7,15 @@ import (
 
 /*
 Arrays
-[N][M]Type
 [N][M]Type{ {value1, value2 }, ..., { valueX, valueN} }
-[...][...]Type{ {value1, value2 }, ..., { valueX, valueN} }
 */
 
 /*
 Slices
 make([][]Type, length, capacity)
-make([]Type, length)
-[]Type{}
-[]Type{value1, value2, ..., valueN}
+make([][]Type, length)
+[][]Type{}
+[][]Type{ {value1, value2 }, ..., { valueX, valueN} }
 */
 
 // Arrays are fixed size.
@@ -49,8 +47,38 @@ func slcUpdate(arr [][]int, locX, locY, newValue int) {
 	arr[locX][locY] = newValue
 }
 
+func useMatrix(a interface{}) {
+	// Nothing function so variables are actually used
+}
+
+func exampleOfCreatingMatrixs() {
+	first := [3][4]int{
+		{1, 2, 3, 4},
+		{5, 6, 7, 8},
+		{9, 10, 11, 12},
+	}
+	useMatrix(first)
+
+	second := make([][]int, 0, 6)
+	third := make([][]int, 5)
+	useMatrix(second)
+	useMatrix(third)
+
+	four := [][]int{}
+	useMatrix(four)
+
+	five := [][]int{
+		{1, 2, 3, 4},
+		{5, 6, 7, 8},
+		{9, 10, 11, 12},
+	}
+	useMatrix(five)
+}
+
 func main() {
 	start := time.Now()
+
+	exampleOfCreatingMatrixs()
 
 	matExample := [][]int{
 		{1, 2, 3, 4, 5},
