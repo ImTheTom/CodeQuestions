@@ -1,7 +1,9 @@
 package main
 
-func ReverseQueueFirstKElements(k int, q *Queue) {
-	if q.Empty() || k > q.Size() || k <= 0 {
+import "github.com/ImTheTom/CodeQuestions/Datastructures/queue"
+
+func ReverseQueueFirstKElements(k int, q *queue.Queue) {
+	if q.IsEmpty() || k > q.Size() || k <= 0 {
 		return
 	}
 

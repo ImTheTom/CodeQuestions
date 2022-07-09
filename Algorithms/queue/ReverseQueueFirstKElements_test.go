@@ -5,11 +5,11 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	q "github.com/ImTheTom/CodeQuestions/Datastructures/queue"
+	"github.com/ImTheTom/CodeQuestions/Datastructures/queue"
 )
 
 func TestReverseQueueFirstKElements(t *testing.T) {
-	input := q.Queue{}
+	input := queue.Queue{}
 	input.Enqueue(10)
 	input.Enqueue(20)
 	input.Enqueue(30)
@@ -21,7 +21,7 @@ func TestReverseQueueFirstKElements(t *testing.T) {
 	input.Enqueue(90)
 	input.Enqueue(100)
 
-	output := Queue{}
+	output := queue.Queue{}
 	output.Enqueue(50)
 	output.Enqueue(40)
 	output.Enqueue(30)
@@ -35,12 +35,12 @@ func TestReverseQueueFirstKElements(t *testing.T) {
 
 	type args struct {
 		first  int
-		second Queue
+		second queue.Queue
 	}
 	tests := []struct {
 		name string
 		args args
-		want Queue
+		want queue.Queue
 	}{
 		{
 			name: "first",
