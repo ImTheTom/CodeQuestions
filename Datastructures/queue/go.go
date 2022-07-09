@@ -25,6 +25,14 @@ func (q *Queue) Dequeue() int {
 	return element
 }
 
+func (q *Queue) Size() int {
+	return len(q.Elements)
+}
+
+func (q *Queue) IsEmpty() bool {
+	return len(q.Elements) == 0
+}
+
 func main() {
 	start := time.Now()
 

@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+// Not exported
+
 /*
 Arrays
 [N]Type
