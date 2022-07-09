@@ -18,6 +18,8 @@ make([][]Type, length)
 [][]Type{ {value1, value2 }, ..., { valueX, valueN} }
 */
 
+// Not exported
+
 // Arrays are fixed size.
 
 // Working with arrays is very hard in go. Usually use slices instead.
