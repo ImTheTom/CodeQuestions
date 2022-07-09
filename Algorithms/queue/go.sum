@@ -1,3 +1,5 @@
+github.com/ImTheTom/CodeQuestions/Datastructures/queue v0.0.0-20220709223506-c48d5142a43c h1:jfQnpx0VC7VEX4K2jN3GOo2cLWSvj1cYIpVz9Ix0f8I=
+github.com/ImTheTom/CodeQuestions/Datastructures/queue v0.0.0-20220709223506-c48d5142a43c/go.mod h1:0ggj90DmbE3gPxhxw/ylEWdStQrnEdmdlvCoglAsT+4=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

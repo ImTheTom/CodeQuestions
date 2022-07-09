@@ -4,10 +4,12 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	q "github.com/ImTheTom/CodeQuestions/Datastructures/queue"
 )
 
 func TestReverseQueueFirstKElements(t *testing.T) {
-	input := Queue{}
+	input := q.Queue{}
 	input.Enqueue(10)
 	input.Enqueue(20)
 	input.Enqueue(30)
