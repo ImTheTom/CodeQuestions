@@ -2,4 +2,4 @@
 
 echo 'Database password is test'
 
-docker exec -it mysql_lc-db_1 mysql -u leetcode -p
+docker exec -it ${PWD##*/}_lc-db_1 mysql -u leetcode -p
