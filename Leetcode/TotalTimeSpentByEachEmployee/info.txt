@@ -1,0 +1,11 @@
+docker exec -it mysql_lc-db_1 bash
+
+mysql -u leetcode -p
+
+SHOW DATABASES;
+
+USE [DATABASE];
+
+SHOW TABLES;
+
+exit;
