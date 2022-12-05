@@ -7,27 +7,26 @@ import (
 )
 
 func TestDoQuestion(t *testing.T) {
-	type args struct {
-		first  int
-		second int
-	}
 	tests := []struct {
-		name string
-		args args
-		want int
+		name     string
+		filename string
+		want     int
 	}{
 		{
-			name: "first",
-			args: args{
-				first:  1,
-				second: 1,
-			},
-			want: 2,
+			name:     "first",
+			filename: "text.txt",
+			want:     0,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.Equal(t, tt.want, DoQuestion(tt.args.first, tt.args.second))
+			inputValue, err := readFile(tt.filename)
+			if err != nil {
+				t.Error(err)
+				t.FailNow()
+			}
+
+			assert.Equal(t, tt.want, DoQuestion(inputValue))
 		})
 	}
 }

@@ -5,8 +5,8 @@ import (
 	"time"
 )
 
-func DoQuestion(first int, second int) int {
-	return first + second
+func DoQuestion(input []string) int {
+	return 0
 }
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 	fmt.Printf("loaded file with %d lines\n", len(lines))
 
 	fmt.Println("Running main")
-	result := DoQuestion(1, 1)
+	result := DoQuestion(lines)
 	fmt.Printf("Got %v\n", result)
 
 	elapsed := time.Since(start)
