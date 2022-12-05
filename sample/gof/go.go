@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+const file = "text.txt"
+
+// const file = "actual.txt"
+
 func DoQuestion(input []string) int {
 	return 0
 }
@@ -12,7 +16,7 @@ func DoQuestion(input []string) int {
 func main() {
 	start := time.Now()
 
-	lines, err := readFile("text.txt")
+	lines, err := readFile(file)
 	if err != nil {
 		fmt.Println("reading failed " + err.Error())
 	}
