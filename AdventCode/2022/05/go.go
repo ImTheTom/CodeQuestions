@@ -31,12 +31,13 @@ type ListHelper struct {
 
 func (l *ListHelper) doActions() {
 	for _, a := range l.Actions {
-		// Read the elements
-		elements := l.Stacks[a.From][(len(l.Stacks[a.From]) - a.Amount):]
+		for i := 0; i < a.Amount; i++ {
+			elements := l.Stacks[a.From][(len(l.Stacks[a.From]) - 1):]
 
-		l.Stacks[a.From] = l.Stacks[a.From][:(len(l.Stacks[a.From]) - a.Amount)]
+			l.Stacks[a.From] = l.Stacks[a.From][:(len(l.Stacks[a.From]) - 1)]
 
-		l.Stacks[a.To] = append(l.Stacks[a.To], elements...)
+			l.Stacks[a.To] = append(l.Stacks[a.To], elements...)
+		}
 	}
 }
 
@@ -51,7 +52,7 @@ func DoQuestion(input []string) *ListHelper {
 func createListHelper(input []string) *ListHelper {
 	isStacking := true
 
-	stacks := make([][]rune, 12)
+	stacks := make([][]rune, 9)
 
 	actions := make([]*Action, 0)
 
