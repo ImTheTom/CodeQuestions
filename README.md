@@ -1,6 +1,12 @@
 # Code Questions
 Answers to code questions I find and hopefully less complex versions of https://github.com/ImTheTom/OldSideProjectsCode/tree/master/LeetCode
 
+## Create a new sample
+
+use the create new script
+
+`./scripts/create-new.sh -t go -n TwoSum`
+
 ## Running Typescript files
 
  * Requires Node/npm
